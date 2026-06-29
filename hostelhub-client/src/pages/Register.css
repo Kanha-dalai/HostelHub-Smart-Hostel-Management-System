@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ===========================
+   REGISTER PAGE
+=========================== */
+
+.register-page{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:#F4F7FB;
+}
+
+/* ===========================
+   LEFT SIDE
+=========================== */
+
+.left-side{
+
+    flex:1;
+
+    position:relative;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:60px;
+
+    color:white;
+}
+
+/* Overlay */
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.75)
+    );
+}
+
+/* Content */
+
+.left-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:550px;
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.logo-section h1{
+
+    font-size:55px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.logo-section p{
+
+    font-size:18px;
+
+    color:#E2E8F0;
+
+    margin-bottom:35px;
+}
+
+/* ===========================
+   BADGE
+=========================== */
+
+.badge{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    background:linear-gradient(
+        90deg,
+        #2563EB,
+        #06B6D4
+    );
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+}
+
+/* ===========================
+   HERO CONTENT
+=========================== */
+
+.hero-content h2{
+
+    font-size:50px;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+}
+
+.hero-content h2 span{
+
+    color:#60A5FA;
+}
+
+.hero-content p{
+
+    color:#E2E8F0;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+}
+
+/* ===========================
+   FEATURES
+=========================== */
+
+.feature-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.feature-item{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:12px;
+
+    padding:16px 20px;
+
+    transition:.3s;
+
+    font-size:17px;
+}
+
+.feature-item:hover{
+
+    transform:translateX(10px);
+
+    background:rgba(37,99,235,.35);
+}
+
+/* ===========================
+   RIGHT SIDE
+=========================== */
+
+.right-side{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+    background:#F8FAFC;
+}
+
+/* ===========================
+   REGISTER CARD
+=========================== */
+
+.register-card{
+
+    width:100%;
+
+    max-width:480px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+.register-card h2{
+
+    text-align:center;
+
+    font-size:34px;
+
+    color:#1E293B;
+
+    margin-bottom:10px;
+}
+
+.subtitle{
+
+    text-align:center;
+
+    color:#64748B;
+
+    margin-bottom:30px;
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+form label{
+
+    font-weight:600;
+
+    color:#334155;
+
+    margin-bottom:8px;
+}
+
+/* ===========================
+   USER TYPE
+=========================== */
+
+.user-type{
+
+    margin-bottom:20px;
+}
+
+.user-type-label{
+
+    display:block;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    color:#334155;
+
+    margin-bottom:12px;
+}
+
+.radio-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:35px;
+}
+
+.radio-option{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    font-weight:500;
+
+    color:#334155;
+}
+
+.radio-option input[type="radio"]{
+
+    width:18px;
+
+    height:18px;
+
+    margin:0;
+
+    accent-color:#2563EB;
+
+    cursor:pointer;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+form input:not([type="radio"]),
+form select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    margin-bottom:20px;
+
+    border:1px solid #CBD5E1;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+    background:white;
+
+    color:#334155;
+}
+
+form input:not([type="radio"]):focus,
+form select:focus{
+
+    border-color:#2563EB;
+
+    box-shadow:0 0 8px rgba(37,99,235,.25);
+}
+
+/* Disabled Field */
+
+input[readonly]{
+
+    background:#F1F5F9;
+
+    color:#64748B;
+
+    cursor:not-allowed;
+}
+
+/* ===========================
+   REGISTER BUTTON
+=========================== */
+
+.register-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:linear-gradient(
+        90deg,
+        #2563EB,
+        #1D4ED8
+    );
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.register-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 20px rgba(37,99,235,.35);
+}
+
+/* ===========================
+   LOGIN LINK
+=========================== */
+
+.login-link{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#64748B;
+
+    font-size:15px;
+}
+
+.login-link a{
+
+    color:#2563EB;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    margin-left:5px;
+}
+
+.login-link a:hover{
+
+    text-decoration:underline;
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+.register-card{
+
+    max-height:90vh;
+
+    overflow-y:auto;
+}
+
+.register-card::-webkit-scrollbar{
+
+    width:8px;
+}
+
+.register-card::-webkit-scrollbar-thumb{
+
+    background:#CBD5E1;
+
+    border-radius:10px;
+}
+
+.register-card::-webkit-scrollbar-thumb:hover{
+
+    background:#94A3B8;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .register-page{
+
+        flex-direction:column;
+    }
+
+    .left-side{
+
+        min-height:45vh;
+
+        padding:40px;
+    }
+
+    .hero-content h2{
+
+        font-size:40px;
+    }
+
+    .right-side{
+
+        padding:30px;
+    }
+
+    .register-card{
+
+        max-width:95%;
+    }
+}
+
+@media(max-width:768px){
+
+    .left-side{
+
+        display:none;
+    }
+
+    .right-side{
+
+        width:100%;
+
+        padding:20px;
+    }
+
+    .register-card{
+
+        padding:25px;
+    }
+
+    .register-card h2{
+
+        font-size:28px;
+    }
+
+    .radio-group{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+    }
+}

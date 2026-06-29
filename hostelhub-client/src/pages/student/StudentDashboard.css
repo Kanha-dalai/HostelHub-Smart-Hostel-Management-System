@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#eef3f9;
+}
+
+/* Main Dashboard */
+
+.dashboard{
+    min-height:100vh;
+    background:#eef3f9;
+}
+
+/* Header */
+
+.dashboard-header{
+    width:100%;
+    height:80px;
+    background:#1E3A8A;
+    color:#fff;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 60px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.dashboard-header h1{
+    font-size:32px;
+}
+
+.dashboard-header p{
+    font-size:15px;
+    color:#dbeafe;
+}
+
+/* Logout Button */
+
+.logout-btn{
+
+    background:#ef4444;
+    color:white;
+
+    border:none;
+
+    padding:12px 28px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.3s;
+}
+
+.logout-btn:hover{
+
+    background:#dc2626;
+
+    transform:translateY(-2px);
+
+}
+
+/* Welcome */
+
+.welcome{
+
+    width:90%;
+
+    margin:40px auto;
+
+}
+
+.welcome h2{
+
+    color:#1E3A8A;
+
+    font-size:38px;
+
+    margin-bottom:10px;
+
+}
+
+.welcome p{
+
+    color:#555;
+
+    font-size:18px;
+
+}
+
+/* Cards */
+
+.card-container{
+
+    width:90%;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+.card{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h3{
+
+    color:#2563EB;
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+/* Profile */
+
+.profile{
+
+    width:90%;
+
+    margin:45px auto;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:35px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.profile h2{
+
+    color:#2563EB;
+
+    margin-bottom:25px;
+
+}
+
+.profile table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.profile table tr{
+
+    border-bottom:1px solid #ddd;
+
+}
+
+.profile table td{
+
+    padding:15px;
+
+}
+
+.profile table td:first-child{
+
+    width:220px;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+.profile table td:last-child{
+
+    color:#555;
+
+}
+
+/* Footer */
+
+footer{
+
+    text-align:center;
+
+    padding:25px;
+
+    color:#666;
+
+}
+
+/* Responsive */
+
+@media(max-width:1000px){
+
+.card-container{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.dashboard-header{
+
+flex-direction:column;
+
+height:auto;
+
+padding:20px;
+
+text-align:center;
+
+}
+
+.card-container{
+
+grid-template-columns:1fr;
+
+}
+
+.profile{
+
+overflow-x:auto;
+
+}
+
+.welcome h2{
+
+font-size:28px;
+
+}
+
+}

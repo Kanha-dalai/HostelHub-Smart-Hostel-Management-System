@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* ===========================
+   ABOUT PAGE
+=========================== */
+
+.about-page{
+
+    min-height:100vh;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    padding:80px 60px;
+
+    color:white;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.about-header{
+
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.about-badge{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+        90deg,
+        #2563EB,
+        #06B6D4,
+        #8B5CF6
+    );
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+}
+
+.about-header h1{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+    font-weight:800;
+}
+
+.about-header p{
+
+    max-width:850px;
+
+    margin:auto;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    color:#E2E8F0;
+}
+
+/* ===========================
+   ABOUT CARDS
+=========================== */
+
+.about-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:30px;
+
+    margin-bottom:80px;
+}
+
+.about-card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.20);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.35s;
+}
+
+.about-card:hover{
+
+    transform:translateY(-10px);
+
+    background:rgba(37,99,235,.35);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.about-card h2{
+
+    margin-bottom:20px;
+
+    color:#60A5FA;
+
+    font-size:28px;
+}
+
+.about-card p{
+
+    color:#F1F5F9;
+
+    line-height:1.8;
+}
+
+.about-card ul{
+
+    padding-left:20px;
+
+    line-height:2;
+}
+
+.about-card li{
+
+    color:#F8FAFC;
+}
+
+/* ===========================
+   STATISTICS
+=========================== */
+
+.stats-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-bottom:80px;
+}
+
+.stat-card{
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:35px;
+
+    transition:.35s;
+}
+
+.stat-card:hover{
+
+    transform:translateY(-10px);
+
+    background:rgba(37,99,235,.40);
+}
+
+.stat-card h2{
+
+    font-size:45px;
+
+    color:#60A5FA;
+
+    margin-bottom:10px;
+}
+
+.stat-card p{
+
+    color:#F8FAFC;
+
+    font-size:18px;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+.about-footer{
+
+    text-align:center;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+.about-footer h2{
+
+    font-size:40px;
+
+    margin-bottom:20px;
+
+    color:white;
+}
+
+.about-footer p{
+
+    color:#E2E8F0;
+
+    font-size:19px;
+
+    line-height:1.8;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .about-page{
+
+        padding:60px 30px;
+    }
+
+    .about-header h1{
+
+        font-size:45px;
+    }
+
+    .about-header p{
+
+        font-size:18px;
+    }
+}
+
+@media(max-width:768px){
+
+    .about-container{
+
+        grid-template-columns:1fr;
+    }
+
+    .stats-section{
+
+        grid-template-columns:1fr;
+    }
+
+    .about-header h1{
+
+        font-size:38px;
+    }
+
+    .about-footer h2{
+
+        font-size:30px;
+    }
+
+    .about-footer p{
+
+        font-size:17px;
+    }
+}

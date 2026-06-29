@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ===========================
+   HOME SECTION
+=========================== */
+
+.home{
+
+    min-height:100vh;
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    position:relative;
+
+    color:white;
+}
+
+.home::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.60);
+
+    z-index:0;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
+.navbar{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 60px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+}
+
+.logo h2{
+
+    font-size:36px;
+
+    color:white;
+
+    margin-bottom:5px;
+}
+
+.logo span{
+
+    color:#E2E8F0;
+
+    font-size:15px;
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+
+.nav-links{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+}
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:17px;
+
+    font-weight:500;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:#60A5FA;
+}
+
+/* ===========================
+   NAV BUTTONS
+=========================== */
+
+.nav-buttons{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.login-btn,
+.register-btn{
+
+    width:130px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+/* Login */
+
+.login-btn{
+
+    border:2px solid white;
+
+    color:white;
+
+    background:transparent;
+}
+
+.login-btn:hover{
+
+    background:white;
+
+    color:#2563EB;
+}
+
+/* Register */
+
+.register-btn{
+
+    background:#2563EB;
+
+    border:2px solid #2563EB;
+
+    color:white;
+}
+
+.register-btn:hover{
+
+    background:#1D4ED8;
+
+    border-color:#1D4ED8;
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.hero{
+
+    position:relative;
+
+    z-index:2;
+
+    height:85vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    padding-left:80px;
+
+    max-width:750px;
+}
+
+/* Small Tag */
+
+.hero-tag{
+
+    display:inline-block;
+
+    width:fit-content;
+
+    padding:10px 20px;
+
+    margin-bottom:25px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:30px;
+
+    font-size:15px;
+}
+
+/* Heading */
+
+.hero h1{
+
+    font-size:70px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+}
+
+.hero h1 span{
+
+    color:#60A5FA;
+}
+
+/* Paragraph */
+
+.hero p{
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    color:#E2E8F0;
+
+    margin-bottom:40px;
+}
+
+.hero-title{
+    font-size: 48px;
+    font-family: Arial,sans-serif;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+/* ===========================
+   HERO BUTTONS
+=========================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:20px;
+}
+
+.student-btn,
+.admin-btn{
+
+    padding:16px 35px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+/* Student */
+
+.student-btn{
+
+    background:#2563EB;
+
+    color:white;
+
+    border:none;
+}
+
+.student-btn:hover{
+
+    background:#1D4ED8;
+
+    transform:translateY(-3px);
+}
+
+/* Admin */
+
+.admin-btn{
+
+    background:transparent;
+
+    color:white;
+
+    border:2px solid white;
+}
+
+.admin-btn:hover{
+
+    background:white;
+
+    color:#2563EB;
+
+    transform:translateY(-3px);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:20px;
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+        gap:20px;
+    }
+
+    .hero{
+
+        align-items:center;
+
+        text-align:center;
+
+        padding:40px;
+
+        max-width:100%;
+    }
+
+    .hero h1{
+
+        font-size:50px;
+    }
+
+    .hero p{
+
+        font-size:18px;
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+    }
+}
+
+@media(max-width:576px){
+
+    .logo h2{
+
+        font-size:28px;
+    }
+
+    .hero h1{
+
+        font-size:38px;
+    }
+
+    .hero p{
+
+        font-size:16px;
+    }
+
+    .login-btn,
+    .register-btn{
+
+        width:110px;
+
+        height:44px;
+
+        font-size:15px;
+    }
+
+    .student-btn,
+    .admin-btn{
+
+        width:220px;
+    }
+}
