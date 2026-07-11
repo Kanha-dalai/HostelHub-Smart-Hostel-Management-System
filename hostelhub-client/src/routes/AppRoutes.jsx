@@ -9,6 +9,9 @@ import About  from "../components/About";
 import ContactUs from "../components/ContactUs";
 import StudentDashboard from "../pages/student/StudentDashboard";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import ForgotPassword from "../pages/ForgotPassword";
+import ProtectedRoute from "../components/ProtectedRoute";
+
 
 const AppRoutes = () => {
   return (
@@ -17,12 +20,12 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/features" element={<Features/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contactus" element={<ContactUs/>}/>
-        <Route path="/student/dashboard" element={<StudentDashboard/>}/>
-        <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
-
+        <Route path="/student/dashboard" element={<ProtectedRoute allowedRole="student"><StudentDashboard/></ProtectedRoute>}/>
+        <Route path="/admin/dashboard" element={ <ProtectedRoute allowedRole="admin"><AdminDashboard /></ProtectedRoute>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -1,39 +1,92 @@
 import "./StudentDashboard.css";
+import { useNavigate } from "react-router-dom";
 
 function StudentDashboard() {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    // React Router navigation
+    const navigate = useNavigate();
+
+
+    // Get logged-in user information from localStorage
+    const storedUser = localStorage.getItem("user");
+
+    let user = null;
+
+    try {
+
+        if (storedUser) {
+            user = JSON.parse(storedUser);
+        }
+
+    } catch (error) {
+
+        console.error("Invalid user data:", error);
+
+    }
+
+
+    // ======================================================
+    // LOGOUT FUNCTION
+    // ======================================================
+
+    const handleLogout = () => {
+
+        // Remove JWT token
+        localStorage.removeItem("token");
+
+        // Remove logged-in user information
+        localStorage.removeItem("user");
+
+        // Redirect to Login page
+        navigate("/login", {
+            replace: true
+        });
+
+    };
+
 
     return (
+
         <div className="dashboard">
 
-            {/* Header */}
+
+            {/* ==================================================
+                HEADER
+            ================================================== */}
 
             <header className="dashboard-header">
 
                 <div>
-                    <h1>🏠 HostelHub</h1>
-                    <p>Smart Hostel Management System</p>
+
+                    <h1>
+                        🏠 HostelHub
+                    </h1>
+
+                    <p>
+                        Smart Hostel Management System
+                    </p>
+
                 </div>
+
 
                 <button
                     className="logout-btn"
-                    onClick={() => {
-                        localStorage.clear();
-                        window.location.href = "/";
-                    }}
+                    onClick={handleLogout}
                 >
                     Logout
                 </button>
 
             </header>
 
-            {/* Welcome */}
+
+            {/* ==================================================
+                WELCOME SECTION
+            ================================================== */}
 
             <section className="welcome">
 
                 <h2>
-                    Welcome, {user?.fullName} 👋
+                    Welcome, {user?.fullName || "Student"} 👋
                 </h2>
 
                 <p>
@@ -43,75 +96,193 @@ function StudentDashboard() {
 
             </section>
 
-            {/* Cards */}
+
+            {/* ==================================================
+                STUDENT DETAILS CARDS
+            ================================================== */}
 
             <section className="card-container">
 
-                <div className="card">
-                    <h3>👤 Name</h3>
-                    <p>{user?.fullName}</p>
-                </div>
+
+                {/* Name Card */}
 
                 <div className="card">
-                    <h3>🎓 Course</h3>
-                    <p>{user?.course}</p>
+
+                    <h3>
+                        👤 Name
+                    </h3>
+
+                    <p>
+                        {user?.fullName || "Not Available"}
+                    </p>
+
                 </div>
 
-                <div className="card">
-                    <h3>🏠 Hostel</h3>
-                    <p>{user?.hostel}</p>
-                </div>
+
+                {/* Course Card */}
 
                 <div className="card">
-                    <h3>🆔 Roll Number</h3>
-                    <p>{user?.rollNumber}</p>
+
+                    <h3>
+                        🎓 Course
+                    </h3>
+
+                    <p>
+                        {user?.course || "Not Available"}
+                    </p>
+
+                </div>
+
+
+                {/* Hostel Card */}
+
+                <div className="card">
+
+                    <h3>
+                        🏠 Hostel
+                    </h3>
+
+                    <p>
+                        {user?.hostel || "Not Available"}
+                    </p>
+
+                </div>
+
+
+                {/* Roll Number Card */}
+
+                <div className="card">
+
+                    <h3>
+                        🆔 Roll Number
+                    </h3>
+
+                    <p>
+                        {user?.rollNumber || "Not Available"}
+                    </p>
+
                 </div>
 
             </section>
 
-            {/* Profile */}
+
+            {/* ==================================================
+                STUDENT INFORMATION
+            ================================================== */}
 
             <section className="profile">
 
-                <h2>Student Information</h2>
+                <h2>
+                    Student Information
+                </h2>
 
                 <table>
 
                     <tbody>
 
-                        <tr>
-                            <td>Full Name</td>
-                            <td>{user?.fullName}</td>
-                        </tr>
+
+                        {/* Full Name */}
 
                         <tr>
-                            <td>Email</td>
-                            <td>{user?.email}</td>
+
+                            <td>
+                                Full Name
+                            </td>
+
+                            <td>
+                                {user?.fullName || "Not Available"}
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>Phone</td>
-                            <td>{user?.phone}</td>
-                        </tr>
+
+                        {/* Email */}
 
                         <tr>
-                            <td>Role</td>
-                            <td>{user?.role}</td>
+
+                            <td>
+                                Email
+                            </td>
+
+                            <td>
+                                {user?.email || "Not Available"}
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>Course</td>
-                            <td>{user?.course}</td>
-                        </tr>
+
+                        {/* Phone */}
 
                         <tr>
-                            <td>Hostel</td>
-                            <td>{user?.hostel}</td>
+
+                            <td>
+                                Phone
+                            </td>
+
+                            <td>
+                                {user?.phone || "Not Available"}
+                            </td>
+
                         </tr>
 
+
+                        {/* Role */}
+
                         <tr>
-                            <td>Roll Number</td>
-                            <td>{user?.rollNumber}</td>
+
+                            <td>
+                                Role
+                            </td>
+
+                            <td>
+                                {user?.role || "Not Available"}
+                            </td>
+
+                        </tr>
+
+
+                        {/* Course */}
+
+                        <tr>
+
+                            <td>
+                                Course
+                            </td>
+
+                            <td>
+                                {user?.course || "Not Available"}
+                            </td>
+
+                        </tr>
+
+
+                        {/* Hostel */}
+
+                        <tr>
+
+                            <td>
+                                Hostel
+                            </td>
+
+                            <td>
+                                {user?.hostel || "Not Available"}
+                            </td>
+
+                        </tr>
+
+
+                        {/* Roll Number */}
+
+                        <tr>
+
+                            <td>
+                                Roll Number
+                            </td>
+
+                            <td>
+                                {user?.rollNumber || "Not Available"}
+                            </td>
+
                         </tr>
 
                     </tbody>
@@ -120,14 +291,10 @@ function StudentDashboard() {
 
             </section>
 
-            <footer>
-
-                © 2026 HostelHub | Smart Hostel Management System
-
-            </footer>
-
         </div>
+
     );
+
 }
 
 export default StudentDashboard;

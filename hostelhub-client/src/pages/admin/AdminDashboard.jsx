@@ -1,109 +1,276 @@
 import "./AdminDashboard.css";
+import { useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+    // React Router navigation
+    const navigate = useNavigate();
+
+
+    // ======================================================
+    // GET LOGGED-IN ADMIN DATA
+    // ======================================================
+
+    const storedUser = localStorage.getItem("user");
+
+    let user = null;
+
+    try {
+
+        if (storedUser) {
+            user = JSON.parse(storedUser);
+        }
+
+    } catch (error) {
+
+        console.error("Invalid user data in localStorage:", error);
+
+    }
+
+
+    // ======================================================
+    // LOGOUT FUNCTION
+    // ======================================================
+
+    const handleLogout = () => {
+
+        // Remove JWT token
+        localStorage.removeItem("token");
+
+        // Remove logged-in user information
+        localStorage.removeItem("user");
+
+        // Redirect to Login page
+        navigate("/login", {
+            replace: true
+        });
+
+    };
+
 
     return (
+
         <div className="admin-dashboard">
 
-            {/* Header */}
+
+            {/* ==================================================
+                HEADER
+            ================================================== */}
 
             <header className="admin-header">
 
                 <div>
-                    <h1>🏠 HostelHub</h1>
-                    <p>Admin Control Panel</p>
+
+                    <h1>
+                        🏠 HostelHub
+                    </h1>
+
+                    <p>
+                        Admin Control Panel
+                    </p>
+
                 </div>
+
 
                 <button
                     className="logout-btn"
-                    onClick={() => {
-                        localStorage.clear();
-                        window.location.href = "/";
-                    }}
+                    onClick={handleLogout}
                 >
                     Logout
                 </button>
 
             </header>
 
-            {/* Welcome */}
+
+            {/* ==================================================
+                WELCOME SECTION
+            ================================================== */}
 
             <section className="admin-welcome">
 
-                <h2>Welcome, {user?.fullName} 👨‍💼</h2>
+                <h2>
+                    Welcome, {user?.fullName || "Administrator"} 👨‍💼
+                </h2>
 
                 <p>
-                    Manage students, rooms, complaints and notices from one place.
+                    Manage students, rooms, complaints and notices
+                    from one place.
                 </p>
 
             </section>
 
-            {/* Cards */}
+
+            {/* ==================================================
+                DASHBOARD CARDS
+            ================================================== */}
 
             <section className="admin-card-container">
 
-                <div className="admin-card">
-                    <h3>👨 Students</h3>
-                    <p>250</p>
-                </div>
+
+                {/* Students Card */}
 
                 <div className="admin-card">
-                    <h3>🛏 Rooms</h3>
-                    <p>120</p>
+
+                    <h3>
+                        👨 Students
+                    </h3>
+
+                    <p>
+                        250
+                    </p>
+
                 </div>
 
-                <div className="admin-card">
-                    <h3>📄 Leave Requests</h3>
-                    <p>18</p>
-                </div>
+
+                {/* Rooms Card */}
 
                 <div className="admin-card">
-                    <h3>⚠ Complaints</h3>
-                    <p>12</p>
+
+                    <h3>
+                        🛏 Rooms
+                    </h3>
+
+                    <p>
+                        120
+                    </p>
+
+                </div>
+
+
+                {/* Leave Requests Card */}
+
+                <div className="admin-card">
+
+                    <h3>
+                        📄 Leave Requests
+                    </h3>
+
+                    <p>
+                        18
+                    </p>
+
+                </div>
+
+
+                {/* Complaints Card */}
+
+                <div className="admin-card">
+
+                    <h3>
+                        ⚠ Complaints
+                    </h3>
+
+                    <p>
+                        12
+                    </p>
+
                 </div>
 
             </section>
 
-            {/* Admin Details */}
+
+            {/* ==================================================
+                ADMINISTRATOR INFORMATION
+            ================================================== */}
 
             <section className="admin-profile">
 
-                <h2>Administrator Information</h2>
+                <h2>
+                    Administrator Information
+                </h2>
 
                 <table>
 
                     <tbody>
 
-                        <tr>
-                            <td>Full Name</td>
-                            <td>{user?.fullName}</td>
-                        </tr>
+
+                        {/* Full Name */}
 
                         <tr>
-                            <td>Email</td>
-                            <td>{user?.email}</td>
+
+                            <td>
+                                Full Name
+                            </td>
+
+                            <td>
+                                {user?.fullName || "Not Available"}
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>Phone</td>
-                            <td>{user?.phone}</td>
-                        </tr>
+
+                        {/* Email */}
 
                         <tr>
-                            <td>Role</td>
-                            <td>{user?.role}</td>
+
+                            <td>
+                                Email
+                            </td>
+
+                            <td>
+                                {user?.email || "Not Available"}
+                            </td>
+
                         </tr>
 
-                        <tr>
-                            <td>Admin ID</td>
-                            <td>{user?.adminId}</td>
-                        </tr>
+
+                        {/* Phone */}
 
                         <tr>
-                            <td>Hostel</td>
-                            <td>{user?.hostel}</td>
+
+                            <td>
+                                Phone
+                            </td>
+
+                            <td>
+                                {user?.phone || "Not Available"}
+                            </td>
+
+                        </tr>
+
+
+                        {/* Role */}
+
+                        <tr>
+
+                            <td>
+                                Role
+                            </td>
+
+                            <td>
+                                {user?.role || "Not Available"}
+                            </td>
+
+                        </tr>
+
+
+                        {/* Admin ID */}
+
+                        <tr>
+
+                            <td>
+                                Admin ID
+                            </td>
+
+                            <td>
+                                {user?.adminId || "Not Available"}
+                            </td>
+
+                        </tr>
+
+
+                        {/* Hostel */}
+
+                        <tr>
+
+                            <td>
+                                Hostel
+                            </td>
+
+                            <td>
+                                {user?.hostel || "Not Available"}
+                            </td>
+
                         </tr>
 
                     </tbody>
@@ -112,38 +279,51 @@ function AdminDashboard() {
 
             </section>
 
-            {/* Quick Actions */}
+
+            {/* ==================================================
+                QUICK ACTIONS
+            ================================================== */}
 
             <section className="quick-actions">
 
-                <h2>Quick Actions</h2>
+                <h2>
+                    Quick Actions
+                </h2>
 
                 <div className="action-grid">
 
-                    <button>Add Student</button>
+                    <button>
+                        Add Student
+                    </button>
 
-                    <button>Manage Rooms</button>
+                    <button>
+                        Manage Rooms
+                    </button>
 
-                    <button>Approve Leave</button>
+                    <button>
+                        Approve Leave
+                    </button>
 
-                    <button>View Complaints</button>
+                    <button>
+                        View Complaints
+                    </button>
 
-                    <button>Create Notice</button>
+                    <button>
+                        Create Notice
+                    </button>
 
-                    <button>Generate Report</button>
+                    <button>
+                        Generate Report
+                    </button>
 
                 </div>
 
             </section>
-
-            <footer>
-
-                © 2026 HostelHub | Admin Dashboard
-
-            </footer>
-
+            
         </div>
+
     );
+
 }
 
 export default AdminDashboard;

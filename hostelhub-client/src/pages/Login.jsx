@@ -201,7 +201,7 @@ function Login() {
 
               </label>
 
-              <Link to="#">
+              <Link to="/forgot-password">
 
                 Forgot Password?
 
