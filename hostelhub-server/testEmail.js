@@ -8,7 +8,7 @@ const sendTestEmail = async () => {
             from: `"HostelHub" <${process.env.EMAIL_USER}>`,
 
             // Put another email address here to receive the test email
-            to: "chinmayamajhi65@gmail.com",
+            to: "kanhadalai2098@gmail.com",
 
             subject: "HostelHub Email Test",
 
