@@ -1,35 +1,27 @@
 require("dotenv").config();
+const nodemailer = require("nodemailer");
 
-const transporter = require("./config/emailTransporter");
+async function test() {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-const sendTestEmail = async () => {
-    try {
-        const info = await transporter.sendMail({
-            from: `"HostelHub" <${process.env.EMAIL_USER}>`,
+    const info = await transporter.sendMail({
+      from: `"HostelHub Test" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      subject: "SMTP Test",
+      text: "If you receive this, Nodemailer is working.",
+    });
 
-            // Put another email address here to receive the test email
-            to: "kanhadalai2098@gmail.com",
+    console.log("✅ Email sent:", info.response);
+  } catch (err) {
+    console.error("❌ Error:", err);
+  }
+}
 
-            subject: "HostelHub Email Test",
-
-            html: `
-                <div style="font-family: Arial, sans-serif;">
-                    <h2>Welcome to HostelHub 🏠</h2>
-
-                    <p>This is a test email from your HostelHub project.</p>
-
-                    <p>If you received this email, your email configuration is working successfully! 🎉</p>
-                </div>
-            `
-        });
-
-        console.log("Email sent successfully!");
-        console.log("Message ID:", info.messageId);
-
-    } catch (error) {
-        console.error("Email sending failed:");
-        console.error(error.message);
-    }
-};
-
-sendTestEmail();
+test();

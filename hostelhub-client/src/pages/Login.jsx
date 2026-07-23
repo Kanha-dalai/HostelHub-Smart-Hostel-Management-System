@@ -7,6 +7,7 @@ import hostelBg from "../assets/hostel-bg.jpg";
 function Login() {
 
   const navigate = useNavigate();
+  const [loading, setloading] = useState(false);
 
   const[role, setRole] = useState("student");
 
@@ -25,6 +26,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
+      setloading(true);
       const response = await API.post("/auth/login",{
         email: formData.email,
         password: formData.password
@@ -48,6 +50,9 @@ function Login() {
       }
     }catch(error){
       alert(error.response?.data?.message || "Login Failed");
+    }
+    finally{
+      setloading(false);
     }
   };
 
@@ -179,6 +184,7 @@ function Login() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
+              required
             />
 
             <label>Password</label>
@@ -189,6 +195,7 @@ function Login() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
+              required
             />
 
             <div className="options">
@@ -212,9 +219,10 @@ function Login() {
             <button
               className="login-btn"
               type="submit"
+              disabled={loading}
             >
 
-              Login
+              {loading ? "Logging In..." : "Login"}
 
             </button>
 

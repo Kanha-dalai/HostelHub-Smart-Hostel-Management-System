@@ -5,46 +5,8 @@ const router = express.Router();
 const {
     registerUser,
     loginUser,
-    sendRegisterOtp,
-    verifyRegisterOtp,
-    sendForgotPasswordOtp,
-    verifyForgotPasswordOtp,
     resetPassword
 } = require("../controllers/authController");
-
-
-// ======================================================
-// REGISTRATION OTP ROUTES
-// ======================================================
-
-// Send Registration OTP
-router.post("/send-register-otp", sendRegisterOtp);
-
-// Verify Registration OTP
-router.post("/verify-register-otp", verifyRegisterOtp);
-
-
-// ======================================================
-// FORGOT PASSWORD ROUTES
-// ======================================================
-
-// Send Forgot Password OTP
-router.post(
-    "/send-forgot-password-otp",
-    sendForgotPasswordOtp
-);
-
-// Verify Forgot Password OTP
-router.post(
-    "/verify-forgot-password-otp",
-    verifyForgotPasswordOtp
-);
-
-// Reset Password
-router.post(
-    "/reset-password",
-    resetPassword
-);
 
 
 // ======================================================
@@ -56,6 +18,14 @@ router.post("/register", registerUser);
 
 // Login User
 router.post("/login", loginUser);
+
+
+// ======================================================
+// PASSWORD RESET ROUTE
+// ======================================================
+
+// Reset Password (Without OTP)
+router.post("/reset-password", resetPassword);
 
 
 module.exports = router;

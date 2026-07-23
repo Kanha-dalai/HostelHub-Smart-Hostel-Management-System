@@ -11,14 +11,6 @@ function Register() {
   // Student or Admin
   const [userType, setUserType] = useState("student");
 
-  // OTP states
-  const [otp, setOtp] = useState("");
-  const [otpSent, setOtpSent] = useState(false);
-  const [isEmailVerified, setIsEmailVerified] = useState(false);
-
-  // Loading states
-  const [sendingOtp, setSendingOtp] = useState(false);
-  const [verifyingOtp, setVerifyingOtp] = useState(false);
   const [registering, setRegistering] = useState(false);
 
   // Form data
@@ -48,16 +40,6 @@ function Register() {
       ...previousData,
       [name]: value
     }));
-
-    /*
-      If user changes the email after verification,
-      the new email must be verified again.
-    */
-    if (name === "email") {
-      setIsEmailVerified(false);
-      setOtpSent(false);
-      setOtp("");
-    }
   };
 
 
@@ -93,100 +75,6 @@ function Register() {
     }));
   };
 
-
-  // ======================================================
-  // SEND OTP
-  // ======================================================
-
-  const handleSendOtp = async () => {
-
-    // Check email
-    if (!formData.email.trim()) {
-      alert("Please enter your email address first");
-      return;
-    }
-
-    try {
-
-      setSendingOtp(true);
-
-      const response = await API.post(
-        "/auth/send-register-otp",
-        {
-          email: formData.email
-        }
-      );
-
-      alert(response.data.message);
-
-      setOtpSent(true);
-      setIsEmailVerified(false);
-      setOtp("");
-
-    } catch (error) {
-
-      alert(
-        error.response?.data?.message ||
-        "Failed to send OTP"
-      );
-
-    } finally {
-
-      setSendingOtp(false);
-
-    }
-  };
-
-
-  // ======================================================
-  // VERIFY OTP
-  // ======================================================
-
-  const handleVerifyOtp = async () => {
-
-    if (!otp.trim()) {
-      alert("Please enter the OTP");
-      return;
-    }
-
-    if (otp.length !== 6) {
-      alert("OTP must be 6 digits");
-      return;
-    }
-
-    try {
-
-      setVerifyingOtp(true);
-
-      const response = await API.post(
-        "/auth/verify-register-otp",
-        {
-          email: formData.email,
-          otp: otp
-        }
-      );
-
-      alert(response.data.message);
-
-      setIsEmailVerified(true);
-
-    } catch (error) {
-
-      setIsEmailVerified(false);
-
-      alert(
-        error.response?.data?.message ||
-        "OTP verification failed"
-      );
-
-    } finally {
-
-      setVerifyingOtp(false);
-
-    }
-  };
-
-
   // ======================================================
   // REGISTER USER
   // ======================================================
@@ -194,13 +82,6 @@ function Register() {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-
-    // Check email verification
-    if (!isEmailVerified) {
-      alert("Please verify your email with OTP first");
-      return;
-    }
-
     // Password validation
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
@@ -422,106 +303,17 @@ function Register() {
             />
 
 
-            {/* ================= EMAIL + SEND OTP ================= */}
+            {/* ================= EMAIL ================= */}
 
             <label>Email Address</label>
-
-            <div className="email-otp-row">
-
-              <input
+              <input 
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter your email"
-                disabled={isEmailVerified}
-                required
+                required              
               />
-
-              {!isEmailVerified && (
-
-                <button
-                  type="button"
-                  className="send-otp-btn"
-                  onClick={handleSendOtp}
-                  disabled={sendingOtp}
-                >
-
-                  {sendingOtp
-                    ? "Sending..."
-                    : otpSent
-                      ? "Resend OTP"
-                      : "Send OTP"
-                  }
-
-                </button>
-
-              )}
-
-            </div>
-
-
-            {/* ================= OTP VERIFICATION ================= */}
-
-            {otpSent && !isEmailVerified && (
-
-              <div className="otp-section">
-
-                <label>Enter 6-Digit OTP</label>
-
-                <div className="otp-row">
-
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    maxLength="6"
-                    value={otp}
-                    onChange={(e) => {
-
-                      const value = e.target.value.replace(
-                        /\D/g,
-                        ""
-                      );
-
-                      setOtp(value);
-
-                    }}
-                    placeholder="Enter OTP"
-                  />
-
-                  <button
-                    type="button"
-                    className="verify-otp-btn"
-                    onClick={handleVerifyOtp}
-                    disabled={verifyingOtp}
-                  >
-
-                    {verifyingOtp
-                      ? "Verifying..."
-                      : "Verify OTP"
-                    }
-
-                  </button>
-
-                </div>
-
-              </div>
-
-            )}
-
-
-            {/* ================= VERIFIED MESSAGE ================= */}
-
-            {isEmailVerified && (
-
-              <div className="email-verified-message">
-
-                ✓ Email verified successfully
-
-              </div>
-
-            )}
-
 
             {/* ================= PHONE ================= */}
 
